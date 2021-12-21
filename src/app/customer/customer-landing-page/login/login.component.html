@@ -1,0 +1,40 @@
+meepmop
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="form-bg-light">
+            <h3 class="title">Customer Login</h3>
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+                <div class="form-group">
+                    <label for="emailId">Email Id</label>
+                    <input class="form-control" formControlName="emailId" id="emailId" placeholder="email">
+                    <div *ngIf="loginForm.controls['emailId'].invalid && loginForm.controls['emailId'].touched">
+                        <div style="color:red" *ngIf="loginForm.controls['emailId'].hasError('required')">*Field mandatory</div>
+                        <div style="color:red" *ngIf="loginForm.controls['emailId'].dirty && loginForm.controls['emailId'].hasError('emailIdPatternError')">*Email Id pattern Invalid</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="form-control" formControlName="password" id="password" placeholder="password">
+                    <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                        <div style="color:red" *ngIf="loginForm.controls['password'].hasError('required')">*Field Mandatory</div>
+                        <div style="color:red" *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].hasError('passwordPatternError')">*Password pattern Invalid</div>
+                    </div>
+                </div>
+ 
+                <br><br>
+
+                <div class="row">
+                    <button class="col-md-2 offset-md-1 btn btn-success" [disabled]="!loginForm.valid">Login</button>
+                    <button class="col-md-2 offset-md-1 btn btn-primary" type="reset" (click)="errorMessage=''" [disabled]="loginForm.pristine">Reset</button>
+                </div>
+            </form>
+
+            <h5 *ngIf="tryToLogin" class="text-center">Logging in... please wait</h5>
+            <h5 class="error-message text-justify">{{errorMessage}}</h5>
+            <br>
+        </div>
+    </div>
+</div>
