@@ -34,6 +34,6 @@ export class LoginService {
                 errMsg = err.error.errorMessage
             }
         }
-        return throwError(errMsg)
+        return throwError(() => new Error(errMsg))
     }
 }

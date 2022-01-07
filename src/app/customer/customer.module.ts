@@ -8,14 +8,18 @@ import { LoginComponent } from "./customer-landing-page/login/login.component";
 import { LoginService } from "./customer-landing-page/login/login.service";
 import { CustomerHomePageComponent } from "./customer-home-page/customer-home-page.component";
 import { ViewAllProductsComponent } from "./customer-home-page/view-all-products/view-all-products.component";
+import { RegistrationComponent } from "./customer-landing-page/registration/registration.component";
+import { RegistrationService } from "./customer-landing-page/registration/registration.service";
 
 
 @NgModule ({
     declarations: [
         CustomerLandingPageComponent,
-        LoginComponent,
         CustomerHomePageComponent,
-        ViewAllProductsComponent
+        ViewAllProductsComponent,
+        LoginComponent,
+        RegistrationComponent,
+
 
 
     ],
@@ -28,7 +32,8 @@ import { ViewAllProductsComponent } from "./customer-home-page/view-all-products
 
     ],
     providers: [
-        LoginService
+        LoginService,
+        RegistrationService
 
     ],  
     exports: [

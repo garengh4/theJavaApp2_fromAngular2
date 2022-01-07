@@ -4,11 +4,13 @@ import { CustomerHomePageComponent } from "./customer-home-page/customer-home-pa
 import { ViewAllProductsComponent } from "./customer-home-page/view-all-products/view-all-products.component";
 import { CustomerLandingPageComponent } from "./customer-landing-page/customer-landing-page.component";
 import { LoginComponent } from "./customer-landing-page/login/login.component";
+import { RegistrationComponent } from "./customer-landing-page/registration/registration.component";
 
 
 const routes: Routes = [
     {path: 'applicationHome', component: CustomerLandingPageComponent, children: [
-        {path: 'login', component: LoginComponent}, 
+        {path: 'login', component: LoginComponent},
+        {path: 'register', component: RegistrationComponent},
         {path: '', redirectTo: 'login', pathMatch:'full'}
     ]},
     { path: 'home', component: CustomerHomePageComponent, children: [

@@ -20,6 +20,11 @@ export class LoginComponent implements OnInit {
 
     constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) {}
 
+    ngOnInit() {
+        this.customer = new Customer()
+        this.createForm()
+    }
+    
     createForm(){
         this.loginForm = this.fb.group({
             emailId: [this.customer.emailId, [Validators.required, LoginValidators.validateEmailId], null],
@@ -32,22 +37,35 @@ export class LoginComponent implements OnInit {
         this.errorMessage = ''
         this.successMessage = ''
         this.customer = this.loginForm.value as Customer
-        this.loginService.login(this.customer).subscribe((response) => {
-            this.customer = response
-            sessionStorage.setItem('customer', JSON.stringify(this.customer))
-            sessionStorage.setItem('userType', JSON.stringify('Customer'))
 
-            this.tryToLogin = false
-            this.router.navigate(['/home'])
-        }, (error) => {
-            this.tryToLogin = false
-            this.errorMessage = <any> error
+        this.loginService.login(this.customer).subscribe({
+            next: message => {
+                this.customer = message
+                sessionStorage.setItem('customer', JSON.stringify(this.customer))
+                sessionStorage.setItem('userType', JSON.stringify('Customer'))
+
+                this.tryToLogin = false
+                this.router.navigate(['/home'])
+            },
+            error: error => {
+                this.tryToLogin = false
+                this.errorMessage = <any> error
+            }
         })
+
+        // this.loginService.login(this.customer).subscribe((response) => {
+        //     this.customer = response
+        //     sessionStorage.setItem('customer', JSON.stringify(this.customer))
+        //     sessionStorage.setItem('userType', JSON.stringify('Customer'))
+
+        //     this.tryToLogin = false
+        //     this.router.navigate(['/home'])
+        // }, (error) => {
+        //     this.tryToLogin = false
+        //     this.errorMessage = <any> error
+        // })
     }
 
-    ngOnInit() {
-        this.customer = new Customer()
-        this.createForm()
-    }
+
     
 }
