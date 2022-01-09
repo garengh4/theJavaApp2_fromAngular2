@@ -31,8 +31,6 @@ export class LoginValidators {
 
         }
     }
-
-
     
     static validateName(control: AbstractControl): any {
         let namePattern1: RegExp = /^[a-zA-Z ]+/

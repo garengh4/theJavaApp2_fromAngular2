@@ -20,6 +20,8 @@
 const HOSTNAME: string = "localhost";
 const PORT_NUMBER: number = 3333;
 const APPLICATION_NAME: string = '/EKart_Server';
+//myshec259147l
+//'+PORT_NUMBER+'
 export const environment = {
   production: false,
   sellerAPIUrl: 'http://' + HOSTNAME + ':' + PORT_NUMBER + APPLICATION_NAME + '/seller-api',

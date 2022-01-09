@@ -52,18 +52,6 @@ export class LoginComponent implements OnInit {
                 this.errorMessage = <any> error
             }
         })
-
-        // this.loginService.login(this.customer).subscribe((response) => {
-        //     this.customer = response
-        //     sessionStorage.setItem('customer', JSON.stringify(this.customer))
-        //     sessionStorage.setItem('userType', JSON.stringify('Customer'))
-
-        //     this.tryToLogin = false
-        //     this.router.navigate(['/home'])
-        // }, (error) => {
-        //     this.tryToLogin = false
-        //     this.errorMessage = <any> error
-        // })
     }
 
 
